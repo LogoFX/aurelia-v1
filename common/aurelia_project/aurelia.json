@@ -7,7 +7,17 @@
     "elements": "resources/elements",
     "attributes": "resources/attributes",
     "valueConverters": "resources/value-converters",
-    "bindingBehaviors": "resources/binding-behaviors"
+    "bindingBehaviors": "resources/binding-behaviors",
+    "data": "data",
+    "dto": "data/dto",
+    "providers": "data/providers",
+    "providersContracts": "data/providers/contracts",
+    "providersImplementation": "data/providers/implementation",
+    "fakeProviders": "data/providers/implementation/fake",
+    "realProviders": "data/providers/implementation/real",
+    "model": "model",
+    "modelContracts": "model/contracts",
+    "modelImplementation": "model/implementation"
   },
   "transpiler": {
     // @if babel
