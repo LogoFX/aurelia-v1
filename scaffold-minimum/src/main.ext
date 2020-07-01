@@ -4,7 +4,7 @@
 import 'regenerator-runtime/runtime';
 // @endif
 // @if typescript
-import {Aurelia} from 'aurelia-framework';
+import { Aurelia } from 'aurelia-framework';
 // @endif
 // @if ! webpack
 import environment from './environment';
@@ -18,6 +18,19 @@ export function configure(aurelia/* @if typescript **: Aurelia/* @endif */)/* @i
   aurelia.use
     .standardConfiguration()
     // @if webpack
+    .plugin(PLATFORM.moduleName('aurelia-validation'))
+    .plugin(PLATFORM.moduleName('aurelia-dialog'), (configuration) => {
+      // use only attach-focus
+      configuration.useResource('attach-focus');
+      configuration.useDefaults();
+      configuration.settings.lock = true;
+      configuration.settings.centerHorizontalOnly = false;
+      configuration.settings.startingZIndex = 10;
+      configuration.settings.keyboard = true;
+    })
+    .plugin(PLATFORM.moduleName('@logofx/aurelia-mvvm-plugin'))
+    .feature(PLATFORM.moduleName('model/index'))
+    .feature(PLATFORM.moduleName('data/index'))
     .feature(PLATFORM.moduleName('resources/index'));
     // @endif
     // @if cli-bundler
