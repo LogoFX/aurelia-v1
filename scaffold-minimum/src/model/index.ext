@@ -1,0 +1,17 @@
+// @if typescript
+import { FrameworkConfiguration } from 'aurelia-framework';
+// @endif
+// @if webpack
+import { PLATFORM } from 'aurelia-pal';
+// @endif
+
+export * from './contracts';
+export * from './implementation';
+
+export function configure(config: FrameworkConfiguration): void {
+// @if webpack
+  config.aurelia.use
+    .feature(PLATFORM.moduleName('model/contracts/index'))
+    .feature(PLATFORM.moduleName('model/implementation/index'));
+// @endif
+}

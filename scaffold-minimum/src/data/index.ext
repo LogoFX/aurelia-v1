@@ -7,7 +7,6 @@ import { PLATFORM } from 'aurelia-pal';
 
 
 export function configure(config/* @if typescript **: FrameworkConfiguration/* @endif */)/* @if typescript **: void/* @endif */ {
-  //config.globalResources([]);
 // @if webpack
   config.aurelia.use
     .feature(PLATFORM.moduleName('data/dto/index'))
