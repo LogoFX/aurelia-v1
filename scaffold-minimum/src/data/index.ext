@@ -5,6 +5,8 @@ import { FrameworkConfiguration } from 'aurelia-framework';
 import { PLATFORM } from 'aurelia-pal';
 // @endif
 
+export * from './dto';
+export * from './providers';
 
 export function configure(config/* @if typescript **: FrameworkConfiguration/* @endif */)/* @if typescript **: void/* @endif */ {
 // @if webpack
