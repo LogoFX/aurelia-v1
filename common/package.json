@@ -10,12 +10,20 @@
   // @if ! plugin
   "dependencies": {
     "aurelia-bootstrapper": "^2.3.3",
-    "aurelia-animator-css": "^1.0.4"
+    "aurelia-animator-css": "^1.0.4",
+    "aurelia-binding": "2.5.4",
+    "aurelia-dependency-injection": "^1.5.2",
+    "aurelia-dialog": "2.0.0",
+    "aurelia-i18n": "3.1.1",
+    "i18next-resource-store-loader": "^0.1.2",
+    "i18next-xhr-backend": "^3.2.2",
+    "aurelia-validation": "2.0.0-rc2",
+    "@logofx/aurelia-mvvm-plugin": "^0.2.2"
   },
   // @endif
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.0.0",
+    "eslint": "^7.3.1",
     "aurelia-cli": "^1.3.1",
     "aurelia-testing": "^1.0.0",
     "gulp": "^4.0.2",
@@ -39,10 +47,10 @@
     // @endif
 
     // @if typescript
-    "typescript": "^3.8.3",
-    "@types/node": "^13.13.5",
-    "@typescript-eslint/eslint-plugin": "^2.31.0",
-    "@typescript-eslint/parser": "^2.31.0",
+    "typescript": "^3.9.5",
+    "@types/node": "^14.0.14",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
     // @endif
   },
   // @if postcss || babel
