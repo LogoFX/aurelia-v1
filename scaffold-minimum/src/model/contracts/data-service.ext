@@ -10,7 +10,7 @@ export interface IDataService {
 
   getProduct(id: string): Promise<IProduct>;
   
-  getProduct(): Promise<IProduct[]>;
+  getProducts(): Promise<IProduct[]>;
   
   updateProduct(model: IProduct): Promise<IProduct>;
   
