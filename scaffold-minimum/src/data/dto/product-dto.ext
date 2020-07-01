@@ -5,7 +5,7 @@
  */
 export class ProductDto {
 
-  id: number;
+  id: string;
   
   name: string;
   
