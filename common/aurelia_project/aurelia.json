@@ -15,7 +15,7 @@
     "providersImplementation": "data/providers/implementation",
     "fakeProviders": "data/providers/implementation/fake",
     "realProviders": "data/providers/implementation/real",
-    "model": "model",
+    "modelRoot": "model",
     "modelContracts": "model/contracts",
     "modelImplementation": "model/implementation"
   },
