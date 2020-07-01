@@ -1,0 +1,12 @@
+/**
+ *
+ * Represents the data transfer object (aka DTO) for the Product data.
+ *
+ */
+export class ProductDto {
+
+  id: number;
+  
+  name: string;
+  
+}

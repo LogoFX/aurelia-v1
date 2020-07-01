@@ -1,0 +1,29 @@
+import { EditableModel } from '@logofx/aurelia-mvvm-plugin';
+import { IProduct } from 'model/contracts';
+import { ValidationRules } from 'aurelia-validation';
+
+/**
+ * The Product model
+ */
+export class Product extends EditableModel<string> implements IProduct {
+
+  private _name: string = String.empty;
+
+  constructor() {
+
+    super();
+
+    this.rules = ValidationRules
+      .ensure((p: Product) => p.name).displayName('Product Name').required().withMessage('The value is mandatory')
+      .rules;
+  }
+
+  public get name(): string {
+    return this._name;
+  }
+
+  public set name(value: string) {
+    this._name = value;
+    this.makeDirty();
+  }
+}

@@ -1,0 +1,19 @@
+import { IProduct } from './product';
+
+/**
+ * Represents the facade service of Model Layer
+ */
+export interface IDataService {
+  users: IProduct[];
+
+  createProduct(): Promise<IProduct>;
+
+  getProduct(id: string): Promise<IProduct>;
+  
+  getProduct(): Promise<IProduct[]>;
+  
+  updateProduct(model: IProduct): Promise<IProduct>;
+  
+  deleteProduct(model: IProduct): Promise<void>;
+
+}

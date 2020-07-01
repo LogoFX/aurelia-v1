@@ -1,0 +1,36 @@
+import { IProductProvider } from "data/providers/contracts";
+import { ProductDto } from "data/dto";
+//import { singleton } from 'aurelia-dependency-injection';
+
+//@singleton
+export class ProductProvider implements IProductProvider {
+
+  private dtos: ProductDto[] = [];
+
+  constructor() {  
+      init();
+  }
+
+  public async getAsync(id?: string): Promise<ProductDto[]> {
+    return new Promise(resolve => {
+      resolve(this.dtos);
+    });    
+  }
+
+  public async postAsync(productDto: ProductDto): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+
+  public async putAsync(productDto: ProductDto): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+  
+  public async deleteAsync(id?: string): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+
+  private init() {
+      
+  }
+  
+}

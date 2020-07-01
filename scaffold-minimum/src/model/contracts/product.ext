@@ -1,0 +1,7 @@
+import { IEditableModel } from '@logofx/aurelia-mvvm-plugin';
+
+export interface IProduct extends IEditableModel<string> {
+  
+  name: string;
+  
+}

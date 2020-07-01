@@ -1,0 +1,16 @@
+// @if typescript
+import { FrameworkConfiguration } from 'aurelia-framework';
+// @endif
+// @if webpack
+import { PLATFORM } from 'aurelia-pal';
+// @endif
+
+
+export function configure(config/* @if typescript **: FrameworkConfiguration/* @endif */)/* @if typescript **: void/* @endif */ {
+  //config.globalResources([]);
+// @if webpack
+  config.aurelia.use
+    .feature(PLATFORM.moduleName('data/dto/index'))
+    .feature(PLATFORM.moduleName('data/providers/index'));
+// @endif
+}

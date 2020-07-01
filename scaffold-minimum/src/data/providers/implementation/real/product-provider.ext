@@ -1,0 +1,28 @@
+import { IProductProvider } from "data/providers/contracts";
+import { ProductDto } from "data/dto";
+import { autoinject } from 'aurelia-dependency-injection';
+import {HttpClient} from 'aurelia-http-client';
+
+@autoinject
+export class ProductProvider implements IProductProvider {
+
+  constructor(private httpClient: HttpClient) {  
+  }
+
+  public async getAsync(id?: string): Promise<ProductDto[]> {
+    throw new Error("Method not implemented.");
+  }
+
+  public async postAsync(productDto: ProductDto): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+
+  public async putAsync(productDto: ProductDto): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+  
+  public async deleteAsync(id?: string): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+  
+}

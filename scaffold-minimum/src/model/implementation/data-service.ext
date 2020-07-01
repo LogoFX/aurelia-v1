@@ -1,0 +1,99 @@
+import { ProductDto, ProductProvider } from 'data';
+import { IDataService, IProduct, Product } from 'model';
+import { Guid } from '@logofx/aurelia-mvvm-plugin';
+import { autoinject } from 'aurelia-framework';
+
+/**
+ * Represents an implementation of the IDataService interface.
+ */
+@autoinject
+export class DataService implements IDataService {
+
+  public products: IProduct[] = [];
+
+  // tslint:disable-next-line: no-parameter-properties
+  constructor(private productProvider: ProductProvider) {
+  }
+
+  public async createProduct(): Promise<ICompany> {
+    // tslint:disable-next-line: completed-docs
+    class NewProduct extends Product {
+      constructor (id: string) {
+        super();
+
+        this.id = id;
+        this.makeNew();
+      }
+    }
+
+    return new Promise<IProduct>(resolve => {
+      const product = new NewProduct(Guid.create().toString());
+      resolve(product);
+    });
+  }
+
+  public async getProduct(id: string): Promise<IProduct> {
+    return new Promise<IProduct>(async resolve => {
+      const productDtos: ProductDto[] = await this.productProvider.getAsync(id);
+      const product: IProduct = new Product();
+      product.id = productDtos[0].id;
+      product.name = productDtos[0].name;
+      resolve(product);
+    });
+  }
+
+  public async getProducts(): Promise<IProduct[]> {
+    await this.updateLocalProducts();
+    return new Promise(resolve => {
+      resolve(this.products);
+    });
+  }
+
+  public async updateCompany(model: ICompany): Promise<ICompany> {
+    const dto: ProductDto = new ProductDto();
+    dto.id = model.id;
+    dto.name = model.name;
+    if (!model.isNew) {
+      
+      await this.productProvider.putAsync(dto)
+              .then(() => this.updateLocalProducts())
+              .catch(error => {
+                throw error;
+              });
+    } else {
+      await this.productProvider.postAsync(dto)
+              .then(() => this.updateLocalProducts())
+              .catch(error => {
+                throw error;
+              });
+    }
+
+    return this.products.find(c => c.id === model.id);
+  }
+
+  public async deleteProduct(model: IProduct): Promise<void> {
+      await this.productProvider
+        .deleteAsync(model.id)
+        .then(async () => {
+          await this.updateLocalProducts();
+        })
+        .catch(err => {
+            throw err;
+        });
+  }
+
+
+  private async updateLocalProducts(): Promise<void> {
+    this.products.splice(0, this.products.length);
+
+    (await this.productProvider.getAsync()).forEach(dto => {
+      const model: IProduct = new Product();
+      model.id = dto.id;
+      model.name = dto.name;
+      this.products.push(model);
+    });
+
+  }
+
+
+}
