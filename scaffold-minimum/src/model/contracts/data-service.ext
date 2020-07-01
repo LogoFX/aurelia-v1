@@ -4,7 +4,7 @@ import { IProduct } from './product';
  * Represents the facade service of Model Layer
  */
 export interface IDataService {
-  users: IProduct[];
+  products: IProduct[];
 
   createProduct(): Promise<IProduct>;
 
