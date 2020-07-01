@@ -8,7 +8,7 @@ export class ProductProvider implements IProductProvider {
   private dtos: ProductDto[] = [];
 
   constructor() {  
-      init();
+      this.init();
   }
 
   public async getAsync(id?: string): Promise<ProductDto[]> {

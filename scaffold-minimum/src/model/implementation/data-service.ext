@@ -15,7 +15,7 @@ export class DataService implements IDataService {
   constructor(private productProvider: ProductProvider) {
   }
 
-  public async createProduct(): Promise<ICompany> {
+  public async createProduct(): Promise<IProduct> {
     // tslint:disable-next-line: completed-docs
     class NewProduct extends Product {
       constructor (id: string) {
@@ -49,7 +49,7 @@ export class DataService implements IDataService {
     });
   }
 
-  public async updateCompany(model: ICompany): Promise<ICompany> {
+  public async updateProduct(model: IProduct): Promise<IProduct> {
     const dto: ProductDto = new ProductDto();
     dto.id = model.id;
     dto.name = model.name;
