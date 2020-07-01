@@ -28,7 +28,7 @@
 
     // @if sass
     "sass-loader": "^8.0.2",
-    "sass": "^1.26.5",
+    "sass": "^1.26.9",
     // @endif
 
     // @if stylus
