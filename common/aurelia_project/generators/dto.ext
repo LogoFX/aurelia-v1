@@ -1,0 +1,53 @@
+import { inject } from 'aurelia-dependency-injection';
+import { Project, ProjectItem, CLIOptions, UI } from 'aurelia-cli';
+
+/**
+ * Represents the DTO generator
+ */
+@inject(Project, CLIOptions, UI)
+export default class DtoGenerator {
+
+  // tslint:disable-next-line: no-parameter-properties
+  constructor(private project: Project, private options: CLIOptions, private ui: UI) {
+  }
+
+  public execute(): any {
+    return this.ui
+      .ensureAnswer(this.options.args[0], 'What would you like to call the new item?')
+      .then((name: string ) => {
+        name = name.toLowerCase();
+        if (name.endsWith('-dto')) {
+          name = name.replace('-dto', '');
+        }
+        const fileName = `${this.project.makeFileName(name)}-dto`;
+        const className = `${this.project.makeClassName(name)}Dto`;
+
+        this.project.dto.add(
+          ProjectItem.text(`${fileName}.ts`, this.generateSource(className))
+        );
+
+        return this.project.commitChanges()
+          .then(() => this.ui.log(`Created ${fileName}.`));
+      });
+  }
+
+  private generateSource(className: string): string {
+
+    // tslint:disable: no-trailing-whitespace
+    // tslint:disable: align
+    // tslint:disable: no-unused-expression
+    // tslint:disable-next-line: semicolon
+    return `/**
+ *
+ * Represents the data transfer object (aka DTO) for the ${name} data.
+ *
+ */
+export class ${className} {
+
+  public id: string = String.empty;
+
+  public name: string = String.empty;
+}`;
+
+  }
+}
