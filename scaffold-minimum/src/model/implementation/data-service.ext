@@ -33,12 +33,16 @@ export class DataService implements IDataService {
   }
 
   public async getProduct(id: string): Promise<IProduct> {
+    // eslint-disable-next-line no-async-promise-executor
     return new Promise<IProduct>(async resolve => {
       const productDtos: ProductDto[] = await this.productProvider.getAsync(id);
-      const product: IProduct = new Product();
-      product.id = productDtos[0].id;
-      product.name = productDtos[0].name;
-      resolve(product);
+      if (productDtos.length > 0) {
+        const product: IProduct = new Product();
+        product.id = productDtos[0].id;
+        product.name = productDtos[0].name;
+        resolve(product);
+      }
+      resolve(undefined);      
     });
   }
 
