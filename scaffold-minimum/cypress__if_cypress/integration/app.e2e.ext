@@ -6,6 +6,6 @@ context('Aurelia skeleton app', () => {
   });
 
   it('should display greeting', () => {
-    cy.get('h1').contains('Hello World!');
+    cy.get('h2').contains('Hello World!');
   });
 });

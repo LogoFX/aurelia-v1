@@ -1,0 +1,9 @@
+{
+  "greeting": "שלום אורליה!",
+  "score": "חשבון: {{score}}",
+  "lives": "חיים {{count}} נותרה",
+  "lives_plural": "נותרו {{count}} חיים",
+  "friend": "חבר",
+  "friend_male": "חבר",
+  "friend_female": "חברה"
+}
