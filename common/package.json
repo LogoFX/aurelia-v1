@@ -23,14 +23,17 @@
   },
   // @endif
   "devDependencies": {
+    "@types/voca": "^1.4.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.3.1",
     "aurelia-cli": "^1.3.1",
     "aurelia-testing": "^1.0.0",
+    "chalk": "^4.1.0",
     "gulp": "^4.0.2",
     "gulp-eslint": "^6.0.0",
     "minimatch": "^3.0.4",
     "promise-polyfill": "^8.1.3",
+    "voca": "^1.4.0",
 
     // @if plugin
     "aurelia-bootstrapper": "^2.3.3",
