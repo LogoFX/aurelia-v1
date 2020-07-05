@@ -41,7 +41,7 @@ export function configure(aurelia/* @if typescript **: Aurelia/* @endif */)/* @i
           loadPath: 'locales/{{lng}}/{{ns}}.json', // <-- XHR settings for where to get the files from
         },
         attributes: aliases,
-        parseMissingKeyHandler : (key: string): string => `The key \"${key}\" is missing.`,
+        parseMissingKeyHandler : (key: string): string => `The key "${key}" is missing.`,
         lng : 'en',
         fallbackLng : 'en',
         load : "currentOnly",
