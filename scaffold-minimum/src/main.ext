@@ -5,6 +5,7 @@ import 'regenerator-runtime/runtime';
 // @endif
 // @if typescript
 import { Aurelia } from 'aurelia-framework';
+import { Backend, TCustomAttribute } from 'aurelia-i18n';
 // @endif
 // @if ! webpack
 import environment from './environment';

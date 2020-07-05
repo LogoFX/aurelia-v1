@@ -326,7 +326,12 @@ module.exports = ({ production } = {}, {extractCss, analyze, tests, hmr, port, h
     }),
     // @endif
     new ModuleDependenciesPlugin({
-      'aurelia-testing': ['./compile-spy', './view-spy']
+      'aurelia-testing': ['./compile-spy', './view-spy'],
+      "aurelia-i18n": [
+          { name: "locales/en/translation.json" },
+          { name: "locales/ru/translation.json" },
+          { name: "locales/he/translation.json" }
+      ]
     }),
     new HtmlWebpackPlugin({
       template: 'index.ejs',
