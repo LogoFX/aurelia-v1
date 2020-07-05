@@ -1,1 +1,22 @@
-{}
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "html.suggest.angular1": false,
+    "html.suggest.ionic": false,
+    "workbench.colorCustomizations": {
+      "tab.unfocusedActiveBorder": "#fff0"
+    },
+    "cSpell.words": [
+      "Kossoglyad",
+      "glyad",
+      "automapper",
+      "cherow",
+      "instrumenter",
+      "logofx",
+      "logoui",
+      "mvvm",
+      "polyfill",
+      "roboto",
+      "voca",
+      "webfont"
+    ]
+  }
