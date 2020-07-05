@@ -1,2 +1,22 @@
+// @if typescript
+import { FrameworkConfiguration } from 'aurelia-framework';
+// @endif
+import { fake, real } from './implementation';
+import { IProductProvider } from './contracts';
+import * as environment from '../../../config/environment.json';
+
 export * from './contracts';
 export * from './implementation';
+
+
+export function configure(config/* @if typescript **: FrameworkConfiguration/* @endif */)/* @if typescript **: void/* @endif */ {
+  
+  if (environment.data === "fake") {
+    config.aurelia.container.registerSingleton(IProductProvider, fake.ProductProvider);
+  } else if (environment.data === "real") {
+    config.aurelia.container.registerSingleton(IProductProvider, real.ProductProvider);
+  } else {
+    throw new Error('The build configuration is wrong or unsupported. \nCheck your environment[.production].json file[s].')
+  }
+
+}

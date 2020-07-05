@@ -1,8 +1,10 @@
 import { ProductDto } from "data/dto";
 
+export const IProductProvider = Symbol('IProductProvider');
+
 export interface IProductProvider {
 
-  getAsync(id?: string): Promise<ProductDto[]> | Promise<ProductDto>;
+  getAsync(id?: string): Promise<ProductDto[]>;
 
   postAsync(productDto: ProductDto): Promise<void>;
 

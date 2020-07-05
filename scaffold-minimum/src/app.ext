@@ -1,3 +1,21 @@
+import { IProduct } from './model/contracts/product';
+import { DataService } from './model/implementation/data-service';
+import { autoinject } from 'aurelia-dependency-injection';
+
+@autoinject
 export class App {
-  /* @if typescript */public /* @endif */message = 'Hello World!';
+  
+  public message = 'Hello World!';
+
+  constructor(private dataService: DataService) { }
+
+  protected attached(): void {
+    this.dataService.getProduct("p2")
+      .then((value: IProduct)=> {
+        this.message = value.name;
+      })
+      .catch ((e: Error) => {
+        this.message = `The exception "${e.name}" was thrown with message "${e.message}". \nThe stack trace: \n${e.stack}`;
+      });
+  }
 }

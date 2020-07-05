@@ -3,7 +3,12 @@ import { ProductDto } from "data/dto";
 import { autoinject } from 'aurelia-dependency-injection';
 import {HttpClient} from 'aurelia-http-client';
 
-@autoinject
+/**
+ * 
+ * Represents a real implementation of the IProductProvider interface.
+ * 
+ */
+ @autoinject
 export class ProductProvider implements IProductProvider {
 
   constructor(private httpClient: HttpClient) {  

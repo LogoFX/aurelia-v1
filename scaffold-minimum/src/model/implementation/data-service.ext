@@ -1,18 +1,19 @@
-import { ProductDto, ProductProvider } from 'data';
+import { ProductDto } from 'data';
+import { IProductProvider } from 'data/providers/contracts';
 import { IDataService, IProduct, Product } from 'model';
 import { Guid } from '@logofx/aurelia-mvvm-plugin';
-import { autoinject } from 'aurelia-framework';
+import { inject } from 'aurelia-dependency-injection';
 
 /**
  * Represents an implementation of the IDataService interface.
  */
-@autoinject
+@inject(IProductProvider)
 export class DataService implements IDataService {
 
   public products: IProduct[] = [];
 
   // tslint:disable-next-line: no-parameter-properties
-  constructor(private productProvider: ProductProvider) {
+  constructor(private productProvider: IProductProvider) {
   }
 
   public async createProduct(): Promise<IProduct> {
@@ -33,17 +34,18 @@ export class DataService implements IDataService {
   }
 
   public async getProduct(id: string): Promise<IProduct> {
-    // eslint-disable-next-line no-async-promise-executor
-    return new Promise<IProduct>(async resolve => {
-      const productDtos: ProductDto[] = await this.productProvider.getAsync(id);
-      if (productDtos.length > 0) {
-        const product: IProduct = new Product();
-        product.id = productDtos[0].id;
-        product.name = productDtos[0].name;
-        resolve(product);
-      }
-      resolve(undefined);      
-    });
+    return this.productProvider.getAsync(id)
+            .then((productDtos: ProductDto[]) => {
+              if (productDtos.length > 0) {
+                const product: IProduct = new Product();
+                product.id = productDtos[0].id;
+                product.name = productDtos[0].name;
+                return product;
+              }
+            })
+            .catch((e: Error) => {
+              throw e;
+            });
   }
 
   public async getProducts(): Promise<IProduct[]> {
@@ -98,6 +100,5 @@ export class DataService implements IDataService {
     });
 
   }
-
 
 }

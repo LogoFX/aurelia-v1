@@ -1,8 +1,11 @@
 import { IProductProvider } from "data/providers/contracts";
 import { ProductDto } from "data/dto";
-//import { singleton } from 'aurelia-dependency-injection';
 
-//@singleton
+/**
+ * 
+ * Represents a fake implementation of the IProductProvider interface.
+ * 
+ */
 export class ProductProvider implements IProductProvider {
 
   private dtos: ProductDto[] = [];
@@ -13,7 +16,12 @@ export class ProductProvider implements IProductProvider {
 
   public async getAsync(id?: string): Promise<ProductDto[]> {
     return new Promise(resolve => {
-      resolve(this.dtos);
+      if (id) {
+        resolve(this.dtos.filter(item => item.id === id));
+      }        
+      else {
+        resolve(this.dtos);
+      }
     });    
   }
 
@@ -30,7 +38,15 @@ export class ProductProvider implements IProductProvider {
   }
 
   private init() {
-      
+
+    let product: ProductDto;
+
+    for (let i = 0; i < 5; i++) {
+      product = new ProductDto();
+      product.id = `p${i.toString()}`;
+      product.name = `Product #${i.toString()}`;
+      this.dtos.push(product);
+    }
   }
   
 }
