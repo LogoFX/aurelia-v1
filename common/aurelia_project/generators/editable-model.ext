@@ -11,7 +11,7 @@ import * as path from 'path';
  */
 //@inject(Project, CLIOptions, UI)
 @autoinject
-export class EditableModelGenerator {
+export default class EditableModelGenerator {
 
   // tslint:disable-next-line: no-parameter-properties
   constructor(private project: Project, private options: CLIOptions, private ui: UI) { }
